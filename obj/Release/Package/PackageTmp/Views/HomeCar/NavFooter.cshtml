@@ -1,0 +1,29 @@
+﻿@model List<RodinaTurkey.Models.Entitiy.Tbl_Rentcar>
+<section class="ftco-section ftco-no-pt">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+                <h2 class="mb-2">Diğer Araçlarımızada Bakmak İster Misiniz ?</h2>
+            </div>
+        </div> <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-4">
+                    <div class="car-wrap rounded ftco-animate">
+                        <div class="img rounded d-flex align-items-end" style="background-image: url(@item.CarImage);">
+                        </div>
+                        <div class="text">
+                            <h2 class="mb-0"><a href="~/AdminRentContent/List/@item.ID">@item.Tbl_RentCategory.RentCategory @item.CarName</a></h2>
+                            <div class="d-flex mb-3">
+                                <span class="cat">@item.Tbl_RentCategory.RentCategory</span>
+                                <p class="price ml-auto">€@item.Sales <span>/günlük</span></p>
+                            </div>
+                            <p class="d-flex mb-0 d-block"><a href="~/HomeContact/List/" class="btn btn-primary py-2 mr-1">İletişime Geçin</a> <a href="~/HomeCar/GetById/@item.ID" class="btn btn-secondary py-2 ml-1">Detaylar</a></p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

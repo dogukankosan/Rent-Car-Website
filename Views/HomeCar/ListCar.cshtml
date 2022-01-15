@@ -1,0 +1,50 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<RodinaTurkey.Models.Entitiy.Tbl_Rentcar>
+@{
+    ViewBag.Title = "ListCar";
+    Layout = "~/Views/Shared/_HomeNavbar.cshtml";
+}
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('https://i.hizliresim.com/50sp2xc.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9 ftco-animate pb-5">
+                <h1 class="mb-3 bread">Size Göre En İyi Aracınızı Seçiniz</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="car-wrap rounded ftco-animate">
+                        <div class="img rounded d-flex align-items-end" style="background-image: url(@item.CarImage);">
+                        </div>
+                        <div class="text">
+                            <h2 class="mb-0"><a href="car-single.html">@item.Tbl_RentCategory.RentCategory  @item.CarName</a></h2>
+                            <div class="d-flex mb-3">
+                                <span class="cat">@item.Tbl_RentCategory.RentCategory</span>
+                                <p class="price ml-auto">€@item.Sales <span>/günlük fiyatlarla</span></p>
+                                
+                            </div>
+                            <p class="d-flex mb-0 d-block"><a href="~/HomeContact/List/" class="btn btn-primary py-2 mr-1">İletişime Geçin</a> <a href="~/HomeCar/GetById/@item.ID" class="btn btn-secondary py-2 ml-1">Detaylar</a></p>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="row mt-5">
+                <div class="col text-center">
+                    <div class="block-27">
+                        @Html.PagedListPager((IPagedList)Model,page=>Url.Action("ListCar",new{page}))
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</section>
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>

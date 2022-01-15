@@ -1,0 +1,51 @@
+﻿@model RodinaTurkey.Models.Entitiy.Tbl_Abouts
+<div class="modal" id="modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <a style="margin-left:440px" class="btn btn-danger" href="~/AdminAbout/List/">X</a>
+                    <h2>HAKKIMIZDA GÜNCELLEME</h2>
+                </div>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("UpdateAdd", "AdminAbout", FormMethod.Post))
+                {@Html.HiddenFor(x => x.ID)
+                <label>İSMİNİZ</label>
+                @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @required = "", @MaxLength = 70, @placeholder = "İsminizi Yazınız.." })
+                @Html.ValidationMessageFor(x => x.UserName)
+                <br />
+                <label>RESMİNİZ (LİNK)</label>
+                @Html.TextBoxFor(x => x.Image, new { @class = "form-control", @required = "", @MaxLength = 200, @placeholder = "Resminizi Yazınız.." })
+                @Html.ValidationMessageFor(x => x.Image)
+                <br />
+                <label>ŞİRKET ADI</label>
+                @Html.TextAreaFor(x => x.CompanyName, new { @class = "form-control", @required = "", @MaxLength = 500, @placeholder = "Şirket Adı Yazınız.." })
+                @Html.ValidationMessageFor(x => x.CompanyName)
+                <br />
+                <label>ŞİRKET RESMİ (LİNK)</label>
+                @Html.TextBoxFor(x => x.CompanyImage, new { @class = "form-control", @required = "", @MaxLength = 200, @placeholder = "Şirket Resim Yazınız.." })
+                @Html.ValidationMessageFor(x => x.CompanyImage)
+                <br />
+                <label>MAİL ADRESİNİZ</label>
+                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", @required = "", @MaxLength = 50, type = "email", @placeholder = "Mail Adresinizi Yazınız.." })
+                @Html.ValidationMessageFor(x => x.Mail)
+                <br />
+                <label>TELEFONUZ </label>
+                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @required = "", @MaxLength = 15, @placeholder = "Telefonuzu Yazınız.." })
+                @Html.ValidationMessageFor(x => x.CompanyImage)
+                <br />
+                <label>ADRESİNİZ</label>
+                @Html.TextAreaFor(x => x.Adress, new { @class = "form-control", @required = "", @MaxLength = 200, @placeholder = "Adresinizi Yazınız.." })
+                @Html.ValidationMessageFor(x => x.Adress)
+                <br />
+                <label>TANITIM VİDEONUZ</label>
+                @Html.TextAreaFor(x => x.Video, new { @class = "form-control", @required = "", @MaxLength = 200, @placeholder = "Tanıtım Videonuzu Yazınız.." })
+                @Html.ValidationMessageFor(x => x.Video)
+                <br />
+                <button type="submit" class="btn btn btn-outline-success">HAKKINIZDA GÜNCELLE</button>
+            }
+            </div>
+        </div>
+    </div>
+</div>

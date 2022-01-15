@@ -1,0 +1,31 @@
+﻿@model RodinaTurkey.Models.Entitiy.Tbl_RentContent
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2 style="margin-left: 50px" class="m-0 text-dark">ARAÇ YORUM GÜNCELLEME SAYFASI</h2>
+<hr />
+@using (Html.BeginForm("Update", "AdminRentContent", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.ID, new { @class = "form-control", @required = "", @readonly = true })
+    @Html.HiddenFor(x => x.Status, new { @class = "form-control", @required = "", @readonly = true })
+    @Html.HiddenFor(x => x.RentID, new { @class = "form-control", @required = "", @readonly = true })
+    @Html.HiddenFor(x => x.Date, new { @class = "form-control", @required = "", @readonly = true })
+    <label>YORUM YAPAN</label>
+    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @required = "", @placeholder = "Yorum Yapan Yazınız..", @MaxLength = 50 })
+    @Html.ValidationMessageFor(x => x.UserName, "", new { @class = "text-danger" })
+    <br />
+    <label>MAİL</label>
+    @Html.TextBoxFor(x => x.Mail, new { @required = "", @placeholder = "Mail Yazınız..", @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Mail)
+    <br />
+    <label>YORUM İÇERİĞİ</label>
+    @Html.TextBoxFor(x => x.ContextText, new { @class = "form-control", @required = "", @placeholder = "Yorum İçeriği Yazınız.." })
+    @Html.ValidationMessageFor(x => x.ContextText)
+    <br />
+    <label>RESİM LİNK</label>
+    @Html.TextBoxFor(x => x.Image, new { @class = "form-control", @required = "", @placeholder = "Resim Linki Yazınız.." })
+    @Html.ValidationMessageFor(x => x.Image)
+    <br />
+    <button class="btn btn-outline-success" type="submit">YORUM GÜNCELLE</button>
+}

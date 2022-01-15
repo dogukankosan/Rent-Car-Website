@@ -1,0 +1,31 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model RodinaTurkey.Models.Entitiy.Tbl_RentContent
+<div class="container">
+        <div class="row">
+            <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">Fikrinizi Yorum Yaparak Belirtiniz</h3>
+                @using (Html.BeginForm("Add", "HomeCar", FormMethod.Post, new { @class = "p-5 bg-light" }))
+                {
+                    <div class="form-group">
+                        <label for="name">İsminiz *</label>
+                        @Html.TextBoxFor(x=>x.UserName,new {@class="form-control",@required="",@maxlength=50})
+                        @Html.ValidationMessageFor(x=>x.UserName,"",new{@class="text-danger"})
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mailiniz *</label>
+                        @Html.TextBoxFor(x=>x.Mail,new {@class="form-control",@required="",@type="email",@maxlength=70})
+                        @Html.ValidationMessageFor(x=>x.Mail,"",new{@class="text-danger"})
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mesaj İçeriği *</label>
+                        @Html.TextAreaFor(x => x.ContextText, new { @style="height: 50px",@class = "form-control", @required = "", @maxlength = 500 })
+                        @Html.ValidationMessageFor(x => x.ContextText, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Yorum Gönder" onclick="return confirm('YORUMUNUZ GÖNDERİLECEKTİR VE ONAYIMIZDAN SONRA YAYINLANACAKTIR EMİN MİSİNİZ ?')" class="btn py-3 px-4 btn-primary">
+                    </div>
+                }
+            </div>
+        </div>
+    </div>

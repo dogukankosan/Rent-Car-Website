@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RodinaTurkeyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Tbl_Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ContentText" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Tbl_Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Tbl_Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Rentcar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CarImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RentCagegoryID" Type="Byte" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Tbl_RentCategory" Relationship="RodinaTurkeyModel.FK_Tbl_Rentcar_Tbl_RentCategory" FromRole="Tbl_Rentcar" ToRole="Tbl_RentCategory" />
+    <Property Name="Sales" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="About" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tbl_RentContent" Relationship="RodinaTurkeyModel.FK_Tbl_RentContent_Tbl_Rentcar" FromRole="Tbl_Rentcar" ToRole="Tbl_RentContent" />
+  </EntityType>
+  <EntityType Name="Tbl_RentCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RentCategory" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Tbl_Rentcar" Relationship="RodinaTurkeyModel.FK_Tbl_Rentcar_Tbl_RentCategory" FromRole="Tbl_RentCategory" ToRole="Tbl_Rentcar" />
+  </EntityType>
+  <EntityContainer Name="RodinaTurkeyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Tbl_Contact" EntityType="Self.Tbl_Contact" />
+    <EntitySet Name="Tbl_Customer" EntityType="Self.Tbl_Customer" />
+    <EntitySet Name="Tbl_Login" EntityType="Self.Tbl_Login" />
+    <EntitySet Name="Tbl_Rentcar" EntityType="Self.Tbl_Rentcar" />
+    <EntitySet Name="Tbl_RentCategory" EntityType="Self.Tbl_RentCategory" />
+    <EntitySet Name="sysdiagrams" EntityType="RodinaTurkeyModel.sysdiagrams" />
+    <AssociationSet Name="FK_Tbl_Rentcar_Tbl_RentCategory" Association="RodinaTurkeyModel.FK_Tbl_Rentcar_Tbl_RentCategory">
+      <End Role="Tbl_RentCategory" EntitySet="Tbl_RentCategory" />
+      <End Role="Tbl_Rentcar" EntitySet="Tbl_Rentcar" />
+    </AssociationSet>
+    <EntitySet Name="Tbl_RentContent" EntityType="RodinaTurkeyModel.Tbl_RentContent" />
+    <AssociationSet Name="FK_Tbl_RentContent_Tbl_Rentcar" Association="RodinaTurkeyModel.FK_Tbl_RentContent_Tbl_Rentcar">
+      <End Role="Tbl_Rentcar" EntitySet="Tbl_Rentcar" />
+      <End Role="Tbl_RentContent" EntitySet="Tbl_RentContent" />
+    </AssociationSet>
+    <EntitySet Name="Tbl_HomeData" EntityType="RodinaTurkeyModel.Tbl_HomeData" />
+    <EntitySet Name="Tbl_Abouts" EntityType="RodinaTurkeyModel.Tbl_Abouts" />
+  </EntityContainer>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Tbl_Rentcar_Tbl_RentCategory">
+    <End Type="RodinaTurkeyModel.Tbl_RentCategory" Role="Tbl_RentCategory" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="RodinaTurkeyModel.Tbl_Rentcar" Role="Tbl_Rentcar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_RentCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_Rentcar">
+        <PropertyRef Name="RentCagegoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Tbl_RentContent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="ContextText" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="RentID" Type="Int16" />
+    <NavigationProperty Name="Tbl_Rentcar" Relationship="RodinaTurkeyModel.FK_Tbl_RentContent_Tbl_Rentcar" FromRole="Tbl_RentContent" ToRole="Tbl_Rentcar" />
+  </EntityType>
+  <Association Name="FK_Tbl_RentContent_Tbl_Rentcar">
+    <End Type="RodinaTurkeyModel.Tbl_Rentcar" Role="Tbl_Rentcar" Multiplicity="0..1" />
+    <End Type="RodinaTurkeyModel.Tbl_RentContent" Role="Tbl_RentContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Rentcar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_RentContent">
+        <PropertyRef Name="RentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Tbl_HomeData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Abouts" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Abouts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Adress" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,84 @@
+﻿@model List<RodinaTurkey.Models.Entitiy.Tbl_RentCategory>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2 class="m-0 text-dark">ARAÇ MARKALARI LİSTESİ</h2>
+<hr />
+@{
+    string btnclass = string.Empty, passivecontrol = string.Empty;
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"></h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <table id="tbl1" class="table table-striped projects">
+            <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th class="text-center">
+                    MARKA AD
+                </th>
+                <th class="text-center">
+                    DURUM
+                </th>
+                <th class="text-center">
+                    GÜNCELLE
+                </th>
+                <th class="text-center">
+                    SİL
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.ID
+                    </td>
+                    <td class="text-center">
+                        <a>
+                            @item.RentCategory
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        @{
+                            string statusvalue = @item.Status == true ? "AKTİF" : "PASİF";
+                            string bootstrapclass = @item.Status == true ? "badge badge-success" : "badge badge-danger";
+                        }
+                        @Html.ActionLink(statusvalue, "StatusChanged", "CategoryCar", new { id = item.ID }, new { @class = bootstrapclass, @onclick = "return confirm (' ARAÇ MARKA DURUMU DEĞİŞTİRELECEKTİR EMİN MİSİNİZ ?')" })
+                    </td>
+                    <td class="text-center">
+                        <a href="~/CategoryCar/Update/@item.ID" class="btn btn-info">GÜNCELLE</a>
+                    </td>
+                    <td class="text-center"> @Html.ActionLink("SİL", "Delete", new { id = item.ID }, new { @class = "btn btn-danger", @onclick = "return confirm('SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ ? SİLERSENİZ MARKAYA BAĞLI TÜM ARAÇLAR SİLİNECEKTİR !!')" })</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <a href="~/CategoryCar/List/" data-toggle="modal" data-target="#modal1" class="btn btn-outline-warning">YENİ MARKA EKLE</a>
+</div>
+@Html.Action("CategoryAdd", "CategoryCar")
+<script>
+    $('#tbl1').DataTable(
+        {
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+            }
+        }
+    );
+</script>

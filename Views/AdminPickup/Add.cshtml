@@ -1,0 +1,24 @@
+﻿@model RodinaTurkey.Models.Entitiy.Tbl_Pickup
+<div class="modal" id="modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <a style="margin-left:440px" class="btn btn-danger" href="~/AdminPickup/List/">X</a>
+                    <h2>KONUM EKLE</h2>
+                </div>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("AddPickup", "AdminPickup", FormMethod.Post))
+                {
+                    @Html.HiddenFor(x => x.ID)
+                    <label>ARACIN KİRALACAĞI KONUMU YAZINIZ</label>
+                    @Html.TextBoxFor(x => x.PickupLocation, new { @class = "form-control", @required = "", @MaxLength = 200, @placeholder = "Konum Yazınız.." })
+                    @Html.ValidationMessageFor(x => x.PickupLocation)
+                    <br />
+                    <button type="submit" class="btn btn btn-outline-success">KONUM EKLE</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+﻿@model RodinaTurkey.Models.Entitiy.Tbl_Reservation
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_HomeNavbar.cshtml";
+}
+<div style="background-image: url('https://images.wallpaperscraft.com/image/single/bmw_headlights_lights_137326_1920x1080.jpg'); " data-stellar-background-ratio="0.5">
+    <br />
+    <br />
+    <br />
+    <br />
+    @using (Html.BeginForm("Add", "Reservation", FormMethod.Post, new { @class = "request-form ftco-animate bg-primary" }))
+    {
+        <h2>Online Rezervasyon İşlemini Tamamla</h2>
+        <hr />
+        <div class="form-group">
+            <label for="" class="label">Aracın Kiralanacağı Konum</label>
+            @Html.HiddenFor(x=>x.PickupAdressID)
+            @Html.DropDownListFor(x => x.PickupAdressID, (List<SelectListItem>)ViewBag.dgr, new { @class = "btn btn-secondary dropdown-toggle", @disabled = "disabled" })
+            @Html.ValidationMessageFor(x => x.PickupAdressID, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label for="" class="label">Aracın Bırakılacağı Konum</label>
+            @Html.HiddenFor(x => x.PickupDropID)
+            @Html.DropDownListFor(x => x.PickupDropID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "btn btn-secondary dropdown-toggle", @disabled = "disabled" })
+            @Html.ValidationMessageFor(x => x.PickupDropID, "", new { @class = "text-danger" })
+        </div>
+        <div class="d-flex">
+            <div class="form-group mr-2">
+                <label for="" class="label">Kiralama Başlangıç Tarihi (*)</label>
+                @Html.TextBoxFor(x => x.FirstDate, new { @type = "datetime-local", @class = "form-control", @required = "" })
+                @Html.ValidationMessageFor(x => x.FirstDate, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ml-2">
+                <label for="" class="label">Kiralama Bitiş Tarihi (*)</label>
+                @Html.TextBoxFor(x => x.LastDate, new { @type = "datetime-local", @class = "form-control", @required = "" })
+                @Html.ValidationMessageFor(x => x.LastDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="form-group mr-2">
+                <label for="" class="label">Kiralanacak Araç</label>
+                @Html.HiddenFor(x=>x.CarID)
+                @Html.DropDownListFor(x => x.CarID, (List<SelectListItem>)ViewBag.dgr2, new { @class = "btn btn-secondary dropdown-toggle", @required = "", @disabled = "disabled" })
+                @Html.ValidationMessageFor(x => x.CarID, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ml-2">
+                <label for="" class="label">AD SOYAD (*)</label>
+                @Html.TextBoxFor(x => x.NameSurname, new { @placeholder = "Adınızı Soyadınızı Yazınız..", @class = "form-control", @required = "", maxlength = 100 })
+                @Html.ValidationMessageFor(x => x.NameSurname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="form-group mr-2">
+                <label for="" class="label">Telefonunuz (*)</label>
+                @Html.TextBoxFor(x => x.Phone, new { @placeholder = "Telefonunuzu Yazınız", type = "tel", @class = "form-control", @required = "", maxlength = 15 })
+                @Html.ValidationMessageFor(x => x.Phone, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ml-2">
+                <label for="" class="label">Mail Adresiniz (*)</label>
+                @Html.TextBoxFor(x => x.Mail, new { @placeholder = "Mail Adresinizi Yazınız..", @type = "email", @class = "form-control", @required = "", maxlength = 70 })
+                @Html.ValidationMessageFor(x => x.Mail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="form-group mr-2">
+                <label for="" class="label">Bize İletmek İstediğiniz Bilgi (*)</label>
+                @Html.TextAreaFor(x => x.ContentText, new { @placeholder = "Bizimle İletişime Geçiniz..", @style = "width: 1500px", @class = "form-control", @required = "", maxlength = 500 })
+                @Html.ValidationMessageFor(x => x.ContentText, "", new { @class = "text-danger" })
+            </div>
+        </div> <div class="d-flex">
+                   <div class="form-group mr-2">
+                       <input required="" type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                       <label style="color: black" for="vehicle1">Kiralama Koşullarını Ve Sözleşme Bilgilerini Okudum Kabul Ediyorum</label>
+                       <br/>
+                       <label style="color: white">İndirmek İçin </label>  <a style="color: red" href="~/Sozlesme.pdf" download>Tıklayınız </a>
+                   </div>
+               </div>
+        <div class="d-flex">
+                   <div class="form-group mr-2">
+                       <label style="color: black"><label style="color: red">@ViewBag.sales €</label>/günlük BAŞLAYAN FİYATLARLA</label>
+                       <br />
+                       <label style="color: black">DETAYLI FİYATLAR İÇİN <a href="~/HomeCarSales/List" style="color: red" target="_blank">TIKLAYINIZ..</a></label>
+                   </div>
+               </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-secondary py-3 px-4">Rezervasyon İşlemi Tamamla</button>
+        </div>
+    }
+</div>

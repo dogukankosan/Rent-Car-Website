@@ -1,0 +1,167 @@
+﻿@model RodinaTurkey.Models.Entitiy.Tbl_Rentcar
+@{
+    ViewBag.Title = "GetById";
+    Layout = "~/Views/Shared/_HomeNavbar.cshtml";
+}
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('https://i.hizliresim.com/50sp2xc.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+                <div class="col-md-9 ftco-animate pb-5">
+                    <h1 class="mb-3 bread">Aracın Detayları</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="ftco-section ftco-car-details">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="car-details">
+                        <div class="img rounded" style="background-image: url(@Model.CarImage);"></div>
+                        <div class="text text-center">
+                            <span class="subheading">@Model.Tbl_RentCategory.RentCategory</span>
+                            <h2>@Model.Tbl_RentCategory.RentCategory @Model.CarName</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services">
+                        <div class="media-body py-md-4">
+                            <div class="d-flex mb-3 align-items-center">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-dashboard"></span></div>
+                                <div class="text">
+                                    <h3 class="heading mb-0 pl-3">
+                                        KM
+                                        <span>@Model.Km</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services">
+                        <div class="media-body py-md-4">
+                            <div class="d-flex mb-3 align-items-center">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-pistons"></span></div>
+                                <div class="text">
+                                    <h3 class="heading mb-0 pl-3">
+                                        Şanzıman Tipi
+                                        <span>@Model.Gerbox</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services">
+                        <div class="media-body py-md-4">
+                            <div class="d-flex mb-3 align-items-center">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car-seat"></span></div>
+                                <div class="text">
+                                    <h3 class="heading mb-0 pl-3">
+                                        Koltuk Sayısı
+                                        <span>@Model.ChairCount</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services">
+                        <div class="media-body py-md-4">
+                            <div class="d-flex mb-3 align-items-center">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-suv"></span></div>
+                                <div class="text">
+                                    <h3 class="heading mb-0 pl-3">
+                                        Kapı Sayısı
+                                        <span>@Model.Luggage</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services">
+                        <div class="media-body py-md-4">
+                            <div class="d-flex mb-3 align-items-center">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-diesel"></span></div>
+                                <div class="text">
+                                    <h3 class="heading mb-0 pl-3">
+                                            Yakıt Tipi
+                                        <span>@Model.Oil</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pills">
+                    <div class="bd-example bd-example-tabs">
+                        <div class="d-flex justify-content-center">
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Özellikler</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Açıklama</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-expanded="true">Yorumlar</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <ul class="features">
+                                            <li class="check"><span class="ion-ios-checkmark"></span>Klimalar</li>
+                                            <li class="check"><span class="ion-ios-checkmark"></span>Çocuk Koltuğu</li>
+                                            <li class="check"><span class="ion-ios-checkmark"></span>GPS</li>
+                                            <li class="check"><span class="ion-ios-checkmark"></span>Bagaj</li>
+                                            <li class="check"><span class="ion-ios-checkmark"></span>Müzik</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="features">
+                                            <li class="check"><span class="ion-ios-checkmark"></span>Emniyet Kemeri</li>
+                                            <li class="remove"><span class="ion-ios-close"></span>Uyku Yatağı</li>
+                                            <li class="check"><span class="ion-ios-checkmark"></span>Su</li>
+                                            <li class="check"><span class="ion-ios-checkmark"></span>Bluetooth</li>
+                                            <li class="remove"><span class="ion-ios-close"></span>Yerleşik Bilgisayar</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="features">
+                                            <li class="check"><span class="ion-ios-checkmark"></span>Ses Girişi</li>
+                                            <li class="check"><span class="ion-ios-checkmark"></span>Uzun Süreli Geziler</li>
+                                            <li class="check"><span class="ion-ios-checkmark"></span>Araba Kiti</li>
+                                            <li class="check"><span class="ion-ios-checkmark"></span>Uzaktan Merkezi Kitleme</li>
+                                            <li class="remove"><span class="ion-ios-close"></span>İklim Kontrolü</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
+                                <p>@Model.About</p>
+                            </div>
+                            @Html.Action("GetByContent","HomeCar",new {id=Model.ID})
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@Html.Action("NavFooter","HomeCar")

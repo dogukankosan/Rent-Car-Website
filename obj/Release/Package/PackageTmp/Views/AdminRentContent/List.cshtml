@@ -1,0 +1,111 @@
+﻿@model List<RodinaTurkey.Models.Entitiy.Tbl_RentContent>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2 class="m-0 text-dark">ARAÇLARIN YORUMLARI</h2>
+<hr />
+@{
+    string btnclass = string.Empty, passivecontrol = string.Empty;
+}
+<div class="card">
+    <div class="card-header">
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <table id="tbl1" class="table table-striped projects">
+            <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th class="text-center">
+                       YORUM YAPAN
+                    </th>
+                    <th class="text-center">
+                        MAİL ADRESİ
+                    </th>
+                    <th class="text-center">
+                        MESAJ İÇERİĞİ
+                    </th>
+                    <th class="text-center">
+                        YORUM YAPILAN ARAÇ
+                    </th>
+                    <th class="text-center">
+                      YORUM TARİHİ
+                    </th>
+                    <th class="text-center">
+                        DURUM
+                    </th>
+                    <th>
+                        GÜNCELLE
+                    </th>
+                    <th>
+                        SİL
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.ID
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                @item.UserName
+                            </a>
+                            <br/>
+                            <img height="30" width="30" src="@item.Image"/>
+                        </td>
+                        <td class="text-center">
+                            <a href="mailto:@item.Mail">@item.Mail</a> 
+                        </td>
+                        <td class="text-center">
+                            @item.ContextText
+                        </td>
+                        <td>
+                            <img width="100" src="@item.Tbl_Rentcar.CarImage"/>
+                            <br/>
+                            @item.Tbl_Rentcar.Tbl_RentCategory.RentCategory @item.Tbl_Rentcar.CarName
+                        </td>
+                        @{
+                            string statusvalue = @item.Status == true ? "AKTİF" : "PASİF";
+                            string bootstrapclass = @item.Status == true ? "badge badge-success" : "badge badge-danger";
+                        }
+                    <td class="text-center">@(((DateTime)item.Date).ToString("D"))</td>
+                        <td class="project-state">
+                            <span>@Html.ActionLink(@statusvalue, "StatusChanged", new { id = item.ID }, new { @class = @bootstrapclass })</span>
+                        </td>
+                        <td class="project-actions text-right">
+                            <a href="~/AdminRentContent/Update/@item.ID" class="btn btn-info">
+                                GÜNCELLE
+                            </a>
+                        </td>
+                        <td>@Html.ActionLink("SİL", "Delete", new { id = item.ID }, new { @class = "btn btn-danger", @onclick = "return confirm('SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ ?')" })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <br />
+</div>
+<script>
+    $('#tbl1').DataTable(
+        {
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+            }
+        }
+    );
+</script>
+

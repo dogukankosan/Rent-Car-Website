@@ -1,0 +1,31 @@
+﻿@model RodinaTurkey.Models.Entitiy.Tbl_SalesList
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2 style="margin-left: 50px" class="m-0 text-dark">ARAÇ FİYAT GÜNCELLEME SAYFASI</h2>
+<hr />
+@using (Html.BeginForm("Update", "AdminCarSales", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.ID, new { @class = "form-control", @required = "", @readonly = true })
+    @Html.HiddenFor(x => x.Tbl_Rentcar.ID, new { @class = "form-control", @required = "", @readonly = true })
+    <label>1-5 GÜNLÜK FİYAT</label>
+    @Html.TextBoxFor(x => x.OneFiveDay, new { @class = "form-control", @required = "", @placeholder = "1-5 Günlük Fiyat Yazınız..", @MaxLength = 7 })
+    @Html.ValidationMessageFor(x => x.OneFiveDay, "", new { @class = "text-danger" })
+    <br />
+    <label>5-15 GÜNLÜK FİYAT</label>
+    @Html.TextBoxFor(x => x.FiveFifftenDay, new { @class = "form-control", @maxlength = 7, @required = "", @placeholder = "5-15 Günlük Fiyat Yazınız.." })
+    @Html.ValidationMessageFor(x => x.FiveFifftenDay, "", new { @class = "text-danger" })
+    <br />
+    <label>15-30 GÜNLÜK FİYAT</label>
+    @Html.TextBoxFor(x => x.FifftenThrisDay, new { @class = "form-control", @maxlength = 7, @required = "", @placeholder = "15-30 Günlük Fiyat Yazınız.." })
+    @Html.ValidationMessageFor(x => x.FifftenThrisDay, "", new { @class = "text-danger" })
+    <br />
+    <label>+30 GÜNLÜK FİYAT</label>
+    @Html.TextBoxFor(x => x.ThirsdayPlus, new { @class = "form-control", @maxlength = 7, @required = "", @placeholder = "15-30 Günlük Fiyat Yazınız.." })
+    @Html.ValidationMessageFor(x => x.ThirsdayPlus, "", new { @class = "text-danger" })
+    <br />
+    <button class="btn btn-outline-success" type="submit">ARAÇ FİYAT GÜNCELLE</button>
+    <br />
+    <br />
+}

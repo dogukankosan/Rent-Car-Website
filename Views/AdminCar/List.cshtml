@@ -1,0 +1,126 @@
+﻿@model List<RodinaTurkey.Models.Entitiy.Tbl_Rentcar>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="m-0 text-dark">ARAÇLARIN LİSTESİ</h2>
+<hr />
+@{
+    string btnclass = string.Empty, passivecontrol = string.Empty;
+}
+<div class="card">
+    <div class="card-header">
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <table id="tbl1" class="table table-striped projects">
+            <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th class="text-center">
+                        ARAÇ ADI
+                    </th>
+                    <th class="text-center">
+                        ARAÇ MARKASI
+                    </th>
+                    <th class="text-center">
+                        ARAÇ RESİM
+                    </th>
+                    <th class="text-center">
+                        ARAÇ FİYAT (KİRALAMA)
+                    </th>
+                    <th class="text-center">
+                        ARAÇ HAKKINDA
+                    </th>
+                    <th class="text-center">
+                        KM
+                    </th>
+                    <th class="text-center">
+                        YAKIT TİPİ
+                    </th>
+                    <th class="text-center">
+                        ŞANZIMAN TİPİ
+                    </th>
+
+                    <th class="text-center">
+                        DURUM
+                    </th>
+                    <th>
+                        İŞLEMLER
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.ID
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                @item.CarName
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            @item.Tbl_RentCategory.RentCategory
+                        </td>
+                        <td class="text-center">
+                            <img alt="Avatar" height="60" class="table-avatar" src="@item.CarImage">
+                        </td>
+                        @{
+                            string statusvalue = @item.Status == true ? "AKTİF" : "PASİF";
+                            string bootstrapclass = @item.Status == true ? "badge badge-success" : "badge badge-danger";
+                        }
+                        <td class="text-center">@item.Sales €</td>
+                        <td class="text-center">@item.About</td>
+                        <td class="text-center">
+                            @item.Km
+                        </td>
+                        <td class="text-center">
+                            @item.Oil
+                        </td>
+                        <td class="text-center">
+                            @item.Gerbox
+                        </td>
+                        <td class="project-state">
+                            <span>@Html.ActionLink(@statusvalue, "StatusChanged", new { id = item.ID }, new { @class = @bootstrapclass , @onclick = "return confirm('ARACIN DURUMU DEĞİŞTİRELECEKTİR EMİN MİSİNİZ ??')"})</span>
+                        </td>
+                        <td>
+                            <a href="~/AdminCar/Update/@item.ID" class="btn btn-info">
+                                GÜNCELLE
+                            </a>
+                            @Html.ActionLink("SİL", "Delete", new { id = item.ID }, new { @class = "btn btn-danger", @onclick = "return confirm('SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ ? SİLERSENİZ ARAÇ BİLGİLERİ SİLİNECEKTİR !!')" })
+                            <a href="~/AdminCarSales/Update/@item.ID" class="btn btn-info">
+                                FİYAT GÜNCELLE
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <a href="~/AdminCar/List/" data-toggle="modal" data-target="#modal1" class="btn btn-outline-warning">YENİ ARAÇ EKLE</a>
+    <br />
+    @Html.Action("RentCarrAdd", "AdminCar")
+</div>
+<script>
+    $('#tbl1').DataTable(
+        {
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+            }
+        }
+    );
+</script>

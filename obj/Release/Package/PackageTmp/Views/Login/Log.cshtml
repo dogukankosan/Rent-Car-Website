@@ -1,0 +1,31 @@
+﻿@model RodinaTurkey.Models.Entitiy.Tbl_Login
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ADMİN GİRİŞ SAYFASI</title>
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <meta name="keywords" content="Ribbon Login Form Responsive Templates, Iphone Compatible Templates, Smartphone Compatible Templates, Ipad Compatible Templates, Flat Responsive Templates"/>
+    <link href="~/web/css/style.css" rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<h1>Hoşgeldiniz!<span>Lütfen Giriş Yapınız...</span></h1>
+<div class="login-box">
+    @using (Html.BeginForm("Log", "Login", FormMethod.Post))
+    {
+        @Html.TextBoxFor(x => x.UserName, new { @required = "", @maxlength = 50, @placeholder = "Adınızı Yazınız.." })
+         @Html.ValidationMessageFor(x => x.UserName, "", new { @class = "text-danger" })
+        @Html.TextBoxFor(x => x.Password, new { @maxlength = 50, @required = "", @type = "password", @placeholder = "Şifrenizi Yazınız.." })
+        @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+        <div class="btn">
+            <input type="submit" value="Giriş Yap">
+        </div>
+    }
+</div>
+</body>
+</html>

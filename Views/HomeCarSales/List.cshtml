@@ -1,0 +1,87 @@
+﻿@model List<RodinaTurkey.Models.Entitiy.Tbl_Rentcar>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_HomeNavbar.cshtml";
+}
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('https://i.hizliresim.com/50sp2xc.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9 ftco-animate pb-5">
+                <h1 class="mb-3 bread">ARAÇ FİYATLAR LİSTESİ</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section ftco-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ftco-animate">
+                <div class="car-list">
+                    <table class="table">
+                        <thead class="thead-primary">
+                            <tr class="text-center">
+                                <th>&nbsp;</th>
+                                <th class="bg-primary heading">1-5 Gün Fiyatı</th>
+                                <th class="bg-primary heading">5-15 Gün Fiyatı</th>
+                                <th class="bg-primary heading">15-30 Gün Fiyatı</th>
+                                <th class="bg-primary heading">+30 Gün Fiyatı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="">
+                                    <td class="car-image">
+                                        <div class="img"  style="background-image: url(@item.CarImage);"></div>
+                                        <br/>
+                                        <a class="btn btn-outline-primary" href="~/HomeCar/GetById/@item.ID">Aracın Detayları</a>
+                                    </td>
+                                    <td class="price">
+                                        <p class="btn-custom"><a href="~/Home/List">Rezervasyon Yap</a></p>
+                                        <div class="price-rate">
+                                            <h3>
+                                                <span class="num">€<small class="currency"></small>@item.Tbl_SalesList.OneFiveDay</span>
+                                            </h3>
+                                            <span class="subheading">1-5 Günlük Araç Kiralama Fiyatı</span>
+                                        </div>
+                                    </td>
+
+                                    <td class="price">
+                                        <p class="btn-custom"><a href="~/Home/List">Rezervasyon Yap</a></p>
+                                        <div class="price-rate">
+                                            <h3>
+                                                <span class="num">€<small class="currency"></small> @item.Tbl_SalesList.FiveFifftenDay</span>
+                                            </h3>
+                                            <span class="subheading">5-15 Günlük Araç Kiralama Fiyatı</span>
+                                        </div>
+                                    </td>
+
+                                    <td class="price">
+                                        <p class="btn-custom"><a href="~/Home/List">Rezervasyon Yap</a></p>
+                                        <div class="price-rate">
+                                            <h3>
+                                                <span class="num">€<small class="currency"></small> @item.Tbl_SalesList.FifftenThrisDay</span>
+                                            </h3>
+                                            <span class="subheading">15-30 Günlük Araç Kiralama Fiyatı</span>
+                                        </div>
+                                    </td>
+                                    <td class="price">
+                                        <p class="btn-custom"><a href="~/Home/List">Rezervasyon Yap</a></p>
+                                        <div class="price-rate">
+                                            <h3>
+                                                <span class="num">€<small class="currency"></small> @item.Tbl_SalesList.ThirsdayPlus</span>
+                                            </h3>
+                                            <span class="subheading">+30 Günlük Araç Kiralama Fiyatı</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>

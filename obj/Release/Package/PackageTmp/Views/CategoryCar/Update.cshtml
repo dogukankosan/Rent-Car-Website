@@ -1,0 +1,17 @@
+﻿@model RodinaTurkey.Models.Entitiy.Tbl_RentCategory
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2 style="margin-left: 50px" class="m-0 text-dark">MARKA GÜNCELLEME SAYFASI</h2>
+<hr />
+@using (Html.BeginForm("Update", "CategoryCar", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.ID, new { @class = "form-control", @required = "",@readonly=true})
+    @Html.HiddenFor(x => x.Status, new { @class = "form-control", @required = "",@readonly=true})
+    <label>MARKA ADI</label>
+    @Html.TextBoxFor(x => x.RentCategory, new { @class = "form-control",@required="", @MaxLength = 70})
+    @Html.ValidationMessageFor(x => x.RentCategory, "", new { @class = "text-danger" })
+    <br />
+    <button class="btn btn-outline-success" type="submit">MARKA GÜNCELLE</button>
+}

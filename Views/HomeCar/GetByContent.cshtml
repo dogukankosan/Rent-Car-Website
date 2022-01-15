@@ -1,0 +1,29 @@
+﻿
+@model List<RodinaTurkey.Models.Entitiy.Tbl_RentContent>
+<div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
+    <h3 class="head">@ViewBag.dgr Yorum Sayısı</h3>
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-7">
+                <div class="review d-flex">
+                    <div class="user-img" style="background-image: url(@item.Image)"></div>
+                    <div class="desc">
+                        <h4>
+                            <span class="text-left">@item.UserName</span>
+                            <span class="text-right">@item.Date.Value.ToShortDateString()</span>
+                        </h4>
+                        <p>@item.ContextText</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+<div class="row mt-5">
+    <div class="col text-center">
+        <div class="block-27">
+        </div>
+    </div>
+    </div>
+    @Html.Action("ContentAdd", "HomeCar")
+</div>

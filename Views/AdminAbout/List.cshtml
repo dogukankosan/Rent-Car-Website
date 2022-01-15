@@ -1,0 +1,100 @@
+﻿@model List<RodinaTurkey.Models.Entitiy.Tbl_Abouts>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2 class="m-0 text-dark">HAKKIMIZDA</h2>
+<hr />
+<div class="card">
+    <div class="card-header">
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <table id="tbl1" class="table table-striped projects">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        İSMİNİZ
+                    </th>
+                    <th class="text-center">
+                        RESMİNİZ
+                    </th>
+                    <th class="text-center">
+                       ŞİRKET ADI
+                    </th>
+                    <th class="text-center">
+                        ŞİRKET RESMİ
+                    </th>
+                    <th class="text-center">
+                        E-MAİL
+                    </th>
+                    <th class="text-center">
+                        TELEFON
+                    </th>
+                    <th class="text-center">
+                        ADRES
+                    </th>
+                    <th class="text-center">
+                        TANITIM VİDEOSU
+                    </th>
+                    <th>
+                        GÜNCELLE
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">
+                            @item.UserName
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                <img alt="Avatar" height="60" class="table-avatar" src="@item.Image">
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            @item.CompanyName
+                        </td>
+                        <td class="text-center">
+                            <img alt="Avatar" height="60" class="table-avatar" src="@item.CompanyImage">
+                        </td>
+                        <td class="text-center">
+                            @item.Mail
+                        </td>
+                        <td class="text-center">
+                            @item.Phone
+                        </td>
+                        <td class="text-center">
+                            @item.Adress
+                        </td>
+                        <td>@item.Video</td>
+                        <td class="project-actions text-center">
+                            <a href="~/AdminAbout/List/@item.ID" data-toggle="modal" data-target="#modal1" class="btn btn-info">
+                                GÜNCELLE
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @Html.Action("Update", "AdminAbout")
+</div>
+<script>
+    $('#tbl1').DataTable(
+        {
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+            }
+        }
+    );
+</script>

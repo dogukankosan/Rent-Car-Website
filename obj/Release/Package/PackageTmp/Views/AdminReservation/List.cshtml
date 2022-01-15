@@ -1,0 +1,106 @@
+﻿@model List<RodinaTurkey.Models.Entitiy.Tbl_Reservation>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2 class="m-0 text-dark">REZERVASYON</h2>
+<hr />
+<div class="card">
+    <div class="card-header">
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <table id="tbl1" class="table table-striped projects">
+            <thead>
+            <tr>
+                <th class="text-center">
+                    #
+                </th>
+                <th class="text-center">
+                    İSMİNİZ
+                </th>
+                <th class="text-center">
+                    MAİL
+                </th>
+                <th class="text-center">
+                    TELEFON
+                </th>
+                <th class="text-center">
+                    ARAÇ
+                </th>
+                <th class="text-center">
+                    BAŞLANGIÇ TARİHİ
+                </th>
+                <th class="text-center">
+                    BİTİŞ TARİHİ
+                </th>
+                <th class="text-center">
+                    ARACIN ALINACIĞI KONUM
+                </th>
+                <th class="text-center">
+                    ARACIN BIRAKILACIĞI KONUM
+                </th>
+                <th class="text-center">
+                    SİL
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">
+                            @item.ID
+                        </td>
+                        <td class="text-center">
+                            @item.NameSurname
+                        </td>
+                        <td class="text-center">
+                            <a href="mailto:@item.Mail">
+                                @item.Mail
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            @item.Phone
+                        </td>
+                        <td class="text-center">
+                            <img width="100" src="@item.Tbl_Rentcar.CarImage"/>
+                            @item.Tbl_Rentcar.CarName
+                        </td>
+                        <td class="text-center">
+                            @(((DateTime)item.FirstDate).ToString("F"))
+                        </td>
+                        <td class="text-center">
+                            @(((DateTime)item.LastDate).ToString("F"))
+                        </td>
+                        <td class="text-center">
+                            @item.Tbl_Pickup.PickupLocation
+                        </td>
+                        <td class="text-center">
+                            @item.Tbl_Pickup1.PickupLocation
+                        </td>
+                        <th class="text-center">
+                            @Html.ActionLink("SİL", "Delete", new {id = item.ID}, new {@class = "btn btn-danger", @onclick = "return confirm('REZERVASYONU SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ ?')"})
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $('#tbl1').DataTable(
+        {
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+            }
+        }
+    );
+</script>

@@ -1,0 +1,84 @@
+﻿@using RodinaTurkey.Models.Entitiy
+@model RodinaTurkey.Models.Entitiy.Tbl_Contact
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_HomeNavbar.cshtml";
+}
+@{
+    RodinaTurkeyEntities db = new RodinaTurkeyEntities();
+    var deger = db.Tbl_Abouts.Take(1).FirstOrDefault();
+}
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('https://i.hizliresim.com/50sp2xc.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+                <div class="col-md-9 ftco-animate pb-5">
+                    <h1 class="mb-3 bread">Bizimle İletişime Geçin</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="ftco-section contact-section">
+        <div class="container">
+            <div class="row d-flex mb-5 contact-info">
+                <div class="col-md-4">
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            <div class="border w-100 p-4 rounded mb-2 d-flex">
+                                <div class="icon mr-3">
+                                    <span class="icon-map-o"></span>
+                                </div>
+                                <p><span>Adres:</span>@deger.Adress</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="border w-100 p-4 rounded mb-2 d-flex">
+                                <div class="icon mr-3">
+                                    <span class="icon-mobile-phone"></span>
+                                </div>
+                                <p><span>Telefon:</span> <a href="tel://@deger.Phone">+90(@deger.Phone)</a></p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="border w-100 p-4 rounded mb-2 d-flex">
+                                <div class="icon mr-3">
+                                    <span class="icon-envelope-o"></span>
+                                </div>
+                                <p><span>E-Mail:</span> <a href="mailto:@deger.Mail">@deger.Mail</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 block-9 mb-md-5">
+                   @using (Html.BeginForm("Add","HomeContact",FormMethod.Post))
+                   {
+                        <div class="form-group">
+                            @Html.TextBoxFor(x=>x.Name,new {@class="form-control",@placeholder="Adınızı Yazınız..",@required="",@MaxLength=70})
+                            @Html.ValidationMessageFor(x=>x.Name,"",new {@class="text-danger"})
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", @placeholder = "Mailinizi Yazınız..",@type= "email", @required = "",@MaxLength = 70 })
+                            @Html.ValidationMessageFor(x => x.Mail, "",new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.Subject, new { @class = "form-control", @placeholder = "Konuyu Yazınız..", @required = "",@MaxLength = 200 })
+                            @Html.ValidationMessageFor(x => x.Subject,"", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextAreaFor(x => x.ContentText, new { @class = "form-control", @placeholder = "Mesaj İçeriği Yazınız..", @required = "",@MaxLength = 1000 })
+                            @Html.ValidationMessageFor(x => x.ContentText,"", new { @class = "text-danger" })
+                        </div>
+                       <div class="form-group">
+                           <button class="btn btn-primary py-3 px-5" value="Send Message" type="submit" onclick="return confirm('MESAJ GÖNDERİLECEKTİR EMİN MİSİNİZ ?')">Mesaj Gönder</button>
+                       </div>
+                   }
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385008.6921263468!2d27.920618727808666!3d41.07160672885561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b53fdbc4bfe901%3A0x6f637ffe39da55b6!2sSilivri%2C%20%C4%B0stanbul!5e0!3m2!1str!2str!4v1642238215495!5m2!1str!2str" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>

@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RodinaTurkeyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_Abouts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="CompanyImage" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Mail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Adress" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Video" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Tbl_Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="Mail" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="Subject" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ContentText" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Date" Type="date" />
+  </EntityType>
+  <EntityType Name="Tbl_Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Pickup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PickupLocation" Type="varchar" MaxLength="200" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Tbl_Rentcar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="CarImage" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="RentCagegoryID" Type="tinyint" Nullable="false" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Sales" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="About" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Oil" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Gerbox" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Km" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="ChairCount" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Luggage" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tbl_RentCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RentCategory" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Tbl_RentContent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mail" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="ContextText" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="RentID" Type="smallint" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Tbl_Reservation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameSurname" Type="varchar" MaxLength="100" />
+    <Property Name="Mail" Type="varchar" MaxLength="70" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" />
+    <Property Name="CarID" Type="smallint" />
+    <Property Name="ContentText" Type="varchar" MaxLength="500" />
+    <Property Name="PickupAdressID" Type="tinyint" />
+    <Property Name="PickupDropID" Type="tinyint" />
+    <Property Name="FirstDate" Type="datetime" />
+    <Property Name="LastDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Tbl_SalesList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" Nullable="false" />
+    <Property Name="OneFiveDay" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="FiveFifftenDay" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="FifftenThrisDay" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="ThirsdayPlus" Type="varchar" MaxLength="7" />
+  </EntityType>
+  <Association Name="FK_Tbl_Rentcar_Tbl_RentCategory">
+    <End Role="Tbl_RentCategory" Type="Self.Tbl_RentCategory" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Tbl_Rentcar" Type="Self.Tbl_Rentcar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_RentCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_Rentcar">
+        <PropertyRef Name="RentCagegoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_RentContent_Tbl_Rentcar">
+    <End Role="Tbl_Rentcar" Type="Self.Tbl_Rentcar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Tbl_RentContent" Type="Self.Tbl_RentContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Rentcar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_RentContent">
+        <PropertyRef Name="RentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Reservation_Tbl_Pickup">
+    <End Role="Tbl_Pickup" Type="Self.Tbl_Pickup" Multiplicity="0..1" />
+    <End Role="Tbl_Reservation" Type="Self.Tbl_Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Pickup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_Reservation">
+        <PropertyRef Name="PickupAdressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Reservation_Tbl_Pickup1">
+    <End Role="Tbl_Pickup" Type="Self.Tbl_Pickup" Multiplicity="0..1" />
+    <End Role="Tbl_Reservation" Type="Self.Tbl_Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Pickup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_Reservation">
+        <PropertyRef Name="PickupDropID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Reservation_Tbl_Rentcar">
+    <End Role="Tbl_Rentcar" Type="Self.Tbl_Rentcar" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Tbl_Reservation" Type="Self.Tbl_Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Rentcar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_Reservation">
+        <PropertyRef Name="CarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_SalesList_Tbl_Rentcar1">
+    <End Role="Tbl_Rentcar" Type="Self.Tbl_Rentcar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Tbl_SalesList" Type="Self.Tbl_SalesList" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Rentcar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tbl_SalesList">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RodinaTurkeyModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Abouts" EntityType="Self.Tbl_Abouts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Contact" EntityType="Self.Tbl_Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Login" EntityType="Self.Tbl_Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Pickup" EntityType="Self.Tbl_Pickup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Rentcar" EntityType="Self.Tbl_Rentcar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_RentCategory" EntityType="Self.Tbl_RentCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_RentContent" EntityType="Self.Tbl_RentContent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Reservation" EntityType="Self.Tbl_Reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_SalesList" EntityType="Self.Tbl_SalesList" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Tbl_Rentcar_Tbl_RentCategory" Association="Self.FK_Tbl_Rentcar_Tbl_RentCategory">
+      <End Role="Tbl_RentCategory" EntitySet="Tbl_RentCategory" />
+      <End Role="Tbl_Rentcar" EntitySet="Tbl_Rentcar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_RentContent_Tbl_Rentcar" Association="Self.FK_Tbl_RentContent_Tbl_Rentcar">
+      <End Role="Tbl_Rentcar" EntitySet="Tbl_Rentcar" />
+      <End Role="Tbl_RentContent" EntitySet="Tbl_RentContent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Reservation_Tbl_Pickup" Association="Self.FK_Tbl_Reservation_Tbl_Pickup">
+      <End Role="Tbl_Pickup" EntitySet="Tbl_Pickup" />
+      <End Role="Tbl_Reservation" EntitySet="Tbl_Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Reservation_Tbl_Pickup1" Association="Self.FK_Tbl_Reservation_Tbl_Pickup1">
+      <End Role="Tbl_Pickup" EntitySet="Tbl_Pickup" />
+      <End Role="Tbl_Reservation" EntitySet="Tbl_Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Reservation_Tbl_Rentcar" Association="Self.FK_Tbl_Reservation_Tbl_Rentcar">
+      <End Role="Tbl_Rentcar" EntitySet="Tbl_Rentcar" />
+      <End Role="Tbl_Reservation" EntitySet="Tbl_Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_SalesList_Tbl_Rentcar1" Association="Self.FK_Tbl_SalesList_Tbl_Rentcar1">
+      <End Role="Tbl_Rentcar" EntitySet="Tbl_Rentcar" />
+      <End Role="Tbl_SalesList" EntitySet="Tbl_SalesList" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

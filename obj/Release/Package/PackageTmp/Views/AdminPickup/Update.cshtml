@@ -1,0 +1,17 @@
+﻿@model RodinaTurkey.Models.Entitiy.Tbl_Pickup
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>ARAÇ KİRALAMA KONUMU GÜNCELLEME</h2>
+<hr />
+@using (Html.BeginForm("Update", "AdminPickup", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.ID)
+    @Html.HiddenFor(x => x.Status)
+    <label>ARAÇ KİRALAMA KONUMU</label>
+    @Html.TextBoxFor(x => x.PickupLocation, new { @class = "form-control", @required = "", @MaxLength = 200, @placeholder = "Konum Yazınız.." })
+    @Html.ValidationMessageFor(x => x.PickupLocation)
+    <br />
+    <button type="submit" class="btn btn btn-outline-success">KONUM GÜNCELLE</button>
+}

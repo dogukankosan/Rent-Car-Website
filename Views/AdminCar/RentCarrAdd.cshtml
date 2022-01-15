@@ -1,0 +1,59 @@
+﻿@model RodinaTurkey.Models.Entitiy.Tbl_Rentcar
+<div class="modal" id="modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <a style="margin-left:440px" class="btn btn-danger" href="~/AdminCar/List/">X</a>
+                    <h2>YENİ ARAÇ EKLE</h2>
+                </div>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Add", "AdminCar", FormMethod.Post))
+                {
+                    <label>MODEL İSMİ</label>
+                    @Html.TextBoxFor(x => x.CarName, new { @class = "form-control", @required = "", @MaxLength = 150, @placeholder = "Model İsmi Yazınız.." })
+                    @Html.ValidationMessageFor(x => x.CarName)
+                    <br />
+                    <label>MARKA İSMİ</label>
+                    @Html.DropDownListFor(x => x.RentCagegoryID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.RentCagegoryID,"",new{@class="text-danger"})
+                    <br />
+                    <label>KM</label>
+                    @Html.TextBoxFor(x => x.Km ,new{ @class = "form-control",@maxlength=6,@required="",@placeholder="Km Bilgisini Yazınız.." })
+                    @Html.ValidationMessageFor(x => x.Km, "", new { @class = "text-danger" })
+                    <br />
+                    <label>YAKIT TİPİ</label>
+                    @Html.TextBoxFor(x => x.Oil, new { @class = "form-control", @maxlength = 10, @required = "",placeholder="Benzin-Dizel Yazınız.." })
+                    @Html.ValidationMessageFor(x => x.Oil, "", new { @class = "text-danger" })
+                    <br />
+                    <label>ŞANZIMAN TİPİ</label>
+                    @Html.TextBoxFor(x => x.Gerbox, new { @class = "form-control",@maxlength=10,@required="",@placeholder="Manuel-Otomatik Yazınız.." })
+                    @Html.ValidationMessageFor(x => x.Gerbox, "", new { @class = "text-danger" })
+                    <br />
+                    <label>KOLTUK SAYISI</label>
+                    @Html.TextBoxFor(x => x.ChairCount, new { @class = "form-control",@maxlength=1,@required="",@placeholder="Koltuk Sayısı Yazınız.." })
+                    @Html.ValidationMessageFor(x => x.ChairCount, "", new { @class = "text-danger" })
+                    <br />
+                    <label>KAPI SAYISI</label>
+                    @Html.TextBoxFor(x => x.Luggage, new { @class = "form-control",@maxlength=1,@required="",@placeholder="Kapı Sayısı Yazınız.." })
+                    @Html.ValidationMessageFor(x => x.Luggage, "", new { @class = "text-danger" })
+                    <br />
+                    <label>ARAÇ SATIŞ(KİRALAMA) FİYATI € </label>
+                    @Html.TextBoxFor(x => x.Sales, new { @class = "form-control", @required = "", @placeholder = "Araç Fiyat Yazınız.." })
+                    @Html.ValidationMessageFor(x => x.Sales, "", new { @class = "text-danger" })
+                    <br />
+                    <label>ARAÇ HAKKINDA</label>
+                    @Html.TextAreaFor(x => x.About, new { @class = "form-control", @required = "", @MaxLength = 500, @placeholder = "Araç Hakkında Yazınız.." })
+                    @Html.ValidationMessageFor(x => x.About, "", new { @class = "text-danger" })
+                    <br />
+                    <label>ARAÇ RESİM (LİNK)</label>
+                    @Html.TextBoxFor(x => x.CarImage, new { @class = "form-control", @required = "", @MaxLength = 200, @placeholder = "Araç Resmi Yazınız.." })
+                    @Html.ValidationMessageFor(x => x.CarImage, "", new { @class = "text-danger" })
+                    <br />
+                    <button type="submit" class="btn btn btn-outline-success">YENİ ARAÇ EKLE</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

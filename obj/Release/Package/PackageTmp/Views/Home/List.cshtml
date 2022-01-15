@@ -1,0 +1,187 @@
+﻿@model List<RodinaTurkey.Models.Entitiy.Tbl_Rentcar>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_HomeNavbar.cshtml";
+}
+<div class="hero-wrap ftco-degree-bg"  style="background-image: url('https://i.hizliresim.com/bd4c99c.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+            @Html.Action("ListReser", "Reservation")
+            <div class="col-lg-8 ftco-animate">
+                <div class="text w-100 text-center mb-md-5 pb-md-5">
+                    <h1 class="mb-4">Hızlı &amp; Kolay &amp; Ekonomik</h1>
+                    <h1 class="mb-4">Araç Kiralama</h1>
+                    <a href="@ViewBag.video" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="ion-ios-play"></span>
+                        </div>
+                        <div class="heading-title ml-5">
+                            <span>Tanıtım Videosu</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="row no-gutters">
+            <div class="col-md-12	featured-top">
+                <div class="row no-gutters">
+                    <div class="col-md-8 d-flex align-items-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+                <span class="subheading">SİZİN İHTİYACINIZA GÖRE EN GÜZEL ARAÇLARIMIZ</span>
+                <h2 class="mb-2">ARAÇLARIMIZ</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="carousel-car owl-carousel">
+                    @foreach (var item in Model)
+                    {
+                        <div class="item">
+                            <div class="car-wrap rounded ftco-animate">
+                                <div class="img rounded d-flex align-items-end" style="background-image: url(@item.CarImage);">
+                                </div>
+                                <div class="text">
+                                    <h2 class="mb-0"><a href="#">@item.Tbl_RentCategory.RentCategory @item.CarName</a></h2>
+                                    <div class="d-flex mb-3">
+                                        <span class="cat">@item.Tbl_RentCategory.RentCategory</span>
+                                        <p class="price ml-auto">€@item.Sales <span>/günlük</span></p>
+                                    </div>
+                                    <p class="d-flex mb-0 d-block"><a href="~/HomeContact/List" class="btn btn-primary py-2 mr-1">İletişime Geçin</a> <a href="~/HomeCar/GetById/@item.ID" class="btn btn-secondary py-2 ml-1">Detaylar</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section ftco-about">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url('https://i.hizliresim.com/50sp2xc.jpg');">
+            </div>
+            <div class="col-md-6 wrap-about ftco-animate">
+                <div class="heading-section heading-section-white pl-md-5">
+                    <h2 class="mb-4">Biz Kimiz ?</h2>
+
+                    <p>İZMİRent A Car Olarak Biz Ülkemizin ve Dünyanın Bütün Güzelliklerini Herkesin Görmesi Gerektiğine İnanıyoruz. İZMİRent A Car Ailesi Ve İş Ortaklarımız Hep Birlikte Bunun İçin Çalışıyoruz.</p>
+                    <p>Sizlere En İyi Araçlarımızı Ve Turlarımızı Sunuyoruz.En İyi Araçlarla Türkiyeyi Gezmenizi Ve Turlarla Hem Yurtiçini Hem Yurtdışını Geziyoruz Ve Temel Misyonumuzda;</p>
+                    <h2>Para Harcayarak Sizi Zengin Yapacak Tek Şey Seyahat Etmektir.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <h2 class="mb-3">Hizmet Alanlarımız</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Rent-Car</h3>
+                        <p>Sizin İçin En Uygun Aracı Sunuyoruz.Uzun Seyahatlerinizde Yanınızda Size Eşlik Edicek Ve Güvenli Ve Konforlu Bir Ulaşım Sunacaktır Sizlere.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Turizm-Seyahat</h3>
+                        <p>Yurtiçi Ve Yurt Dışına Turlar Düzenleyip Dünyayı Gezmeyi Hedefledik.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span class="icon-card_travel"></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Seyahat-Vize</h3>
+                        <p>Tüm Dünya İçin Vize İşlemlerinde Sizlerin Yanınızdayız.Vize Ve Seyahat Aşamalarında Sizlere Kolaylık Ve Yol Gösteri Olmayı Hedefledik.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span class="icon-payment"></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Güvenli Ödeme</h3>
+                        <p>En Uygun Fiyatlar Ve Listelerimizle Sizlere En İyi Hizmeti Ve Ödeme Seçenekleri Sunuyoruz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section ftco-intro" style="background-image: url('https://images.wallpaperscraft.com/image/single/mclaren_p1_mclaren_sports_car_128739_1920x1080.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-md-6 heading-section heading-section-white ftco-animate">
+                <h2 class="mb-3">SEYAHAT WEB SİTEMİZEDE GÖZ ATMAK İSTER MİSİNİZ ?</h2>
+                <a target="_blank" href="http://www.rodinaturkey.com/" class="btn btn-primary btn-lg">GÖZ AT</a>
+            </div>
+        </div>
+    </div>
+</section>
+@Html.Action("Content", "Home")
+
+<section class="ftco-counter ftco-section img bg-light" id="section-counter">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+                <div class="block-18">
+                    <div class="text text-border d-flex align-items-center">
+                        <strong class="number" data-number="25">0</strong>
+                        <span>Yıllık <br>Tecrübemiz</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+                <div class="block-18">
+                    <div class="text text-border d-flex align-items-center">
+                        <strong class="number" data-number="@ViewBag.carcount">0</strong>
+                        <span>Toplam <br>Aktif Araç Sayısımız</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+                <div class="block-18">
+                    <div class="text text-border d-flex align-items-center">
+                        <strong class="number" data-number="@ViewBag.categorycount">0</strong>
+                        <span>Marka Sayımız <br></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+                <div class="block-18">
+                    <div class="text d-flex align-items-center">
+                        <strong class="number" data-number="1000">0</strong>
+                        <span>+ <br>Fazla Kiraladığımız Araç Saysısı</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>

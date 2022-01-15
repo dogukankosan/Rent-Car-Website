@@ -1,0 +1,19 @@
+﻿@model RodinaTurkey.Models.Entitiy.Tbl_Login
+@{
+    ViewBag.Title = "LoginUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2 class="m-0 text-dark">ŞİFRE GÜNCELLEME SAYFASI</h2>
+<hr />
+@using (Html.BeginForm("LoginUpdate", "Login", FormMethod.Post))
+{
+    <label>KULLANICI ADI</label>
+    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @required = "", @MaxLength = 50, @placeholder = "Kullanıcı Adı Yazınız.." })
+    @Html.ValidationMessageFor(x => x.UserName)
+    <br />
+    <label>ŞİFRE</label>
+    @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "password", @required = "", @MaxLength = 50, @placeholder = "Şifre Yazınız.." })
+    @Html.ValidationMessageFor(x => x.Password)
+    <br />
+    <button type="submit" class="btn btn-outline-success">GÜNCELLE</button>
+}

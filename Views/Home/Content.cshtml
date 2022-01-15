@@ -1,0 +1,31 @@
+﻿@model List<RodinaTurkey.Models.Entitiy.Tbl_RentContent>
+<section class="ftco-section testimony-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <h2 class="mb-3">En İyi Yorumlar</h2>
+            </div>
+        </div>
+        <div class="row ftco-animate">
+            <div class="col-md-12">
+                <div class="carousel-testimony owl-carousel ftco-owl">
+                    @foreach (var item in Model)
+                    {
+                        <div class="item">
+                            <div class="testimony-wrap rounded text-center py-4 pb-5">
+                                <div class="user-img mb-2" style="background-image: url(@item.Image)">
+                                </div>
+                                <div class="text pt-4">
+                                    <p class="mb-4">@item.ContextText</p>
+                                    <p class="name">@item.UserName</p>
+                                    <span class="position">@(((DateTime)item.Date).ToString("D"))</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

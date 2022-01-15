@@ -1,0 +1,24 @@
+﻿@model RodinaTurkey.Models.Entitiy.Tbl_RentCategory
+<div class="modal" id="modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <a style="margin-left:440px" class="btn btn-danger" href="~/CategoryCar/List">X</a>
+                    <h2>YENİ ARAÇ MARKASI</h2>
+                </div>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Add", "CategoryCar", FormMethod.Post))
+                {
+                    <label>KATEGORİ TANIMLA</label>
+                    @Html.TextBoxFor(x => x.RentCategory, new { @class = "form-control", @required = "", @MaxLength = 70 ,@placeholder="Marka İsmi Yazınız.."})
+                    <br />
+                    @Html.ValidationMessageFor(x => x.RentCategory)
+                    <br />
+                    <button type="submit" class="btn btn btn-outline-success">YENİ MARKA EKLE</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
