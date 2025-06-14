@@ -1,5 +1,3 @@
-![image](https://github.com/user-attachments/assets/09f28c0b-0a83-4bfe-a5a9-cf710001e264)
-
 # 🚗 Rent Car Website
 
 ![Proje Durumu](https://img.shields.io/badge/status-active-brightgreen?style=flat-square)
