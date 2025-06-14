@@ -9,6 +9,7 @@
 ## 📋 İçindekiler
 - [Tanıtım](#tanıtım)
 - [Özellikler](#özellikler)
+- [Teknik Altyapı](#teknik-altyapı)
 - [Kurulum](#kurulum)
 - [Klasör Yapısı](#klasör-yapısı)
 - [Ekran Görüntüleri](#ekran-görüntüleri)
@@ -20,7 +21,7 @@
 
 ## Tanıtım
 
-**Rent Car Website**, araç kiralama sürecini dijitalleştirerek kullanıcıların kolayca araç seçip kiralayabilmesini sağlayan modern ve kullanıcı dostu bir web uygulamasıdır. ASP.NET MVC altyapısı ile geliştirilmiştir.
+**Rent Car Website**, araç kiralama sürecini dijitalleştirerek kullanıcıların kolayca araç seçip rezervasyon yapabilmesini sağlayan modern ve kullanıcı dostu bir web uygulamasıdır. ASP.NET MVC mimarisiyle geliştirilmiştir.
 
 ---
 
@@ -33,6 +34,29 @@
 | 👨‍💼 Kayıt ve giriş işlemleri | 👥 Kullanıcı yönetimi |
 | 📝 Otomatik sözleşme PDF'i | 🔒 Yetkilendirme & doğrulama |
 | 🌐 Duyarlı ve modern arayüz | ⚙️ Sistem ayarları |
+
+---
+
+## Teknik Altyapı
+
+- **Backend:**  
+  - ASP.NET MVC 5 (C#) ile çok katmanlı (Controller/Model/View) yapı.
+  - SQL Server ile entegre, Entity Framework kullanımı (veya doğrudan ADO.NET).
+  - Tüm CRUD işlemleri controller'lar üzerinden yönetilir.
+  - Rezervasyonlar, kullanıcılar ve araçlar için ayrı modeller.
+  - Yetkilendirme ve oturum yönetimi (Forms Authentication veya Identity ile).
+
+- **Frontend:**  
+  - Razor View Engine ile dinamik HTML sayfalar.
+  - Admin paneli için AdminLTE tema (responsive ve modern arayüz).
+  - Statik dosyalar (CSS, JavaScript) Content ve Scripts klasörlerinde.
+  - Kullanıcı dostu formlar, filtreleme ve validasyonlar.
+
+- **Ekstra:**  
+  - PDF sözleşme otomatik oluşturma ve indirme.
+  - Model doğrulamaları için özel Validation katmanı.
+  - Detaylı hata ve bildirim yönetimi.
+  - Kapsamlı raporlama ve istatistik sayfaları.
 
 ---
 
