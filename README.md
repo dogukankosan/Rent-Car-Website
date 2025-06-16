@@ -90,19 +90,18 @@
 
 ---
 
-## Katkı
+## 🤝 Katkı
 
-Katkıda bulunmak isterseniz lütfen fork'layıp pull request gönderin ya da bir [issue](https://github.com/dogukankosan/Rent-Car-Website/issues) açın.
+Katkı sağlamak için projeyi forklayabilir ve pull request gönderebilirsiniz.
+## 📄 Lisans
 
----
-
-## Lisans
-
-Bu proje [MIT Lisansı](LICENSE) ile sunulmaktadır.
+MIT License
 
 ---
 
-## İletişim
+## 📬 İletişim
 
-Her türlü öneri ve sorularınız için bana ulaşabilirsiniz:  
-[GitHub Profilim](https://github.com/dogukankosan)
+- 👨‍💻 Geliştirici: [@dogukankosan](https://github.com/dogukankosan)  
+- 🐞 Suggestions or issues: [Issues sekmesi](https://github.com/dogukankosan/LogoWhatsappEntegrasyon/issues)
+
+---
